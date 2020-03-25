@@ -9,7 +9,8 @@ Note that statistics rely on [external sources](https://github.com/novelcovid/ap
 
 
 ## Node usage
-This node gets a request of all of the statistics, and filter them according to node`s settings.
+This node gets a request of all of the statistics, and filter them according to nodes settings.
+In the ```Specify countries:``` type in the iso code of the country you want to gather the statistics of the COVID-19 virus.(make sure that the iso code is uppercase). 
 
 ### Input:
 Input can be any messsage, there is no need to set up anything.
