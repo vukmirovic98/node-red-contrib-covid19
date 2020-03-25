@@ -1,0 +1,128 @@
+<script type="text/javascript">
+    RED.nodes.registerType('COVID-19',{
+        category: 'statistics',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            infected:{value: true},
+            deaths:{value: true},
+            recovered:{value: true},
+            active:{value: false},
+            critical:{value: false},
+            todaycases:{value: false},
+            todaydeaths:{value: false},
+            casepermilion:{value: false},
+            regionFilter: {value: true},
+            deathspermilion:{value: false},
+            regionList: {value: '["CN","IT"]', validate: function(v) {
+                // The region list only needs to be specified when the region filter is checked
+                var regionFilter = $('#node-input-regionFilter').prop('checked');
+                    var json = JSON.parse(v);
+                    return json && Array.isArray(json) && json.length > 0;
+                return true; // Valid otherwise
+            }},
+            regionListType: {value: "json"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "/icons/icon.png",
+        label: function() {
+            return this.name||"COVID-19";
+        },
+        oneditprepare: function() {
+            $('#node-input-regionList').typedInput({
+                typeField: $("#node-input-regionListType"),
+                types: ['json']
+            });
+            $("#node-input-regionFilter").on("change", function (e) {
+                if (this.checked) {
+                    $(".regionList-row").show();
+                }
+                else {
+                    $(".regionList-row").hide();
+                }                
+            });
+        }                 
+    });
+</script>
+
+<script type="text/html" data-template-name="COVID-19">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <p><strong> Countries:</strong></p>
+    </div>
+    <div class="form-row regionList-row">
+        <label style="padding-top: 8px" for="node-input-regionList"><i class="fa fa-list-ol"></i> Specify countries:</label>
+        <input type="text" id="node-input-regionList" style="width:60%">
+        <input type="hidden" id="node-input-regionListType">
+    </div>
+    <div class="form-row">
+        <p><strong> Cases:</strong></p>
+    </div>
+    <div class="form-row">
+        <label for="node-input-infected" style="width:70%;">Cases count:</label>
+        <input type="checkbox" id="node-input-infected" style="display: inline-block; width: auto; vertical-align: top;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-deaths" style="width:70%;">Deaths count:</label>  
+        <input type="checkbox" id="node-input-deaths" style="display: inline-block; width: auto; vertical-align: top;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-recovered" style="width:70%;">Recovered count:</label>
+        <input type="checkbox" id="node-input-recovered" style="display: inline-block; width: auto; vertical-align: top;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-active" style="width:70%;">Active count:</label>
+        <input type="checkbox" id="node-input-active" style="display: inline-block; width: auto; vertical-align: top;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-critical" style="width:70%;">Critical count:</label>
+        <input type="checkbox" id="node-input-critical" style="display: inline-block; width: auto; vertical-align: top;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-todaycases" style="width:70%;">Today count:</label>
+        <input type="checkbox" id="node-input-todaycases" style="display: inline-block; width: auto; vertical-align: top;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-todaydeaths" style="width:70%;">Today Deaths count:</label>
+        <input type="checkbox" id="node-input-todaydeaths" style="display: inline-block; width: auto; vertical-align: top;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-casepermilion" style="width:70%;">Cases Per One Milion count:</label>
+        <input type="checkbox" id="node-input-casepermilion" style="display: inline-block; width: auto; vertical-align: top;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-deathspermilion" style="width:70%;">Deaths Per One Milion count:</label>
+        <input type="checkbox" id="node-input-deathspermilion" style="display: inline-block; width: auto; vertical-align: top;">
+    </div>
+</script>
+<script type="text/html" data-help-name="COVID-19">
+    <p>A simple node that returns statistics on <strong> COVID-19 (Corona) </strong>virus.</p>
+    <p> In Countries please use ISO formats.
+    </p>
+    <p>Only the countries specified will be in the output. </p>
+        <h3><strong>Settings</strong></h3>
+        <ol class="node-ports">
+        <ul>
+            <li><i><strong>Cases:</strong></i>msg.covid-19.cases will contain a number of infected cases. </li>
+            <li><i><strong>Deaths:</strong></i> msg.covid-19.deaths will contain a number of death cases.</li>
+            <li><i><strong>Recovered:</strong></i> msg.covid-19.recovered will contain a number of recovered cases.</i></li>
+            <li><i><strong>Active:</strong></i> msg.covid-19.active will contain a number of currently active cases.</i></li>
+            <li><i><strong>Critical:</strong></i> msg.covid-19.critical will contain a number of currently critical cases.</i></li>
+            <li><i><strong>Today:</strong></i> msg.covid-19.todaycases will contain a number of daily new infected cases.</i></li>
+            <li><i><strong>Deaths Today:</strong></i> msg.covid-19.todaydeaths will contain a number of daily death cases.</i></li>
+            <li><i><strong>Per One Milion:</strong></i> msg.covid-19.casemilion will contain a number of cases per one milion of country population.</i></li>
+            <li><i><strong>Deaths Per One Milion:</strong></i> msg.covid-19.deathsmilion will contain a number of deaths per one milion of country population.</i></li>
+        </ul></p>
+        <p> 
+         
+        </ol>
+        <h3><strong>Outputs</strong></h3>
+        <ol class="node-ports">
+        <ul>
+            <li></i><strong>msg.covid-19.countryinfo </strong></i> will contain some basic information as: ISO formats, country name, URL to the image file of national flag of the country, and the location of the country in lat/long.
+        </ul>
+</script>

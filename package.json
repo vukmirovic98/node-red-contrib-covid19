@@ -1,0 +1,23 @@
+{
+  "name": "node-red-contrib-corona-statistics",
+  "version": "1.0.0",
+  "description": "A node red to gather information about patients of the COVID-19 virus.",
+  "dependencies": {
+    "node-fetch": "2.6.0"
+  },
+  "node-red": {
+    "nodes": {
+      "corona-statistics": "corona-statistics.js"
+    }
+  },
+  "keywords": [
+    "COVID",
+    "COVID-19",
+    "corona",
+    "statistics",
+    "covid",
+    "covid-19"
+  ],
+  "author": "Nemanja Vukmirovic",
+  "license": "MIT "
+}
