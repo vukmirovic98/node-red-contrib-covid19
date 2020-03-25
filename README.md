@@ -41,16 +41,16 @@ msg.covid19.(countryISO).deathsmilion   (number)    Deaths Per One Milion count
 All of these outputs are optional, depending if selected checkboxes are checked or not. 
 
 ## Screenshots
-![Default values](https://raw.githubusercontent.com/vukmirovic98/Image-library/master/alldisabled.png?token=AMX7F63WIHDQYPQSMY7FVE26PPCTA)
+![ ](https://user-images.githubusercontent.com/53474043/77585482-ddbd7000-6ee4-11ea-84df-409c010c0904.png)
 
 This are the values that are sent everytime.
 
 
-![Clasic output](https://raw.githubusercontent.com/vukmirovic98/Image-library/master/debugwindow.png?token=AMX7F642O5DGEZVN7YWCJE26PPC5Q)
+![](https://user-images.githubusercontent.com/53474043/77585490-deee9d00-6ee4-11ea-843f-8eee3e752c85.png)
 
 This is the output of the node with all of the settigns checked for China and Italy.
 
 
-![Settings page](https://raw.githubusercontent.com/vukmirovic98/Image-library/master/settingwindows.png?token=AMX7F64VCKN2J3BK7HVKE2C6PPDBS)
+![](https://user-images.githubusercontent.com/53474043/77585491-deee9d00-6ee4-11ea-9d23-4c321b3692c4.png)
 
 And these are the settings of the output above.
