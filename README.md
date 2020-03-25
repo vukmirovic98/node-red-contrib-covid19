@@ -41,16 +41,23 @@ msg.covid19.(countryISO).deathsmilion   (number)    Deaths Per One Milion count
 All of these outputs are optional, depending if selected checkboxes are checked or not. 
 
 ## Screenshots
-![ ](https://user-images.githubusercontent.com/53474043/77585482-ddbd7000-6ee4-11ea-84df-409c010c0904.png)
 
 This are the values that are sent everytime.
 
-
-![](https://user-images.githubusercontent.com/53474043/77585490-deee9d00-6ee4-11ea-843f-8eee3e752c85.png)
+![ ](https://user-images.githubusercontent.com/53474043/77585482-ddbd7000-6ee4-11ea-84df-409c010c0904.png)
 
 This is the output of the node with all of the settigns checked for China and Italy.
 
+![](https://user-images.githubusercontent.com/53474043/77585490-deee9d00-6ee4-11ea-843f-8eee3e752c85.png)
+
+And these are the settings of the output above.
 
 ![](https://user-images.githubusercontent.com/53474043/77585491-deee9d00-6ee4-11ea-9d23-4c321b3692c4.png)
 
-And these are the settings of the output above.
+In case the Countries text box is lefted empty or haves an error you will recieve the first error when you deploy your flow, and the second error when the node recieves a message.
+
+![](https://user-images.githubusercontent.com/53474043/77585488-de560680-6ee4-11ea-964b-cda6e73024fd.png)
+
+In case your textbox haves an invalid country iso format you will recieve the following error.
+
+![](https://user-images.githubusercontent.com/53474043/77585941-9e435380-6ee5-11ea-9ea4-8fb539c1d3b5.png)
