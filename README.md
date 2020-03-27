@@ -7,6 +7,13 @@ npm install node-red-contrib-covid19
 ```
 Note that statistics rely on [external sources](https://github.com/novelcovid/api), witch may not be 100% accurate, and may not be online 24/7.
 
+## Version 1.1.0
+msg.covid19 is changed to covid.
+
+Improved status messages.
+
+Improved functionality.
+
 
 ## Node usage
 This node gets a request of all of the statistics, and filter them according to nodes settings.
@@ -15,28 +22,28 @@ In the ```Specify countries:``` type in the iso code of the country you want to 
 ### Input:
 Input can be any messsage, there is no need to set up anything.
 ### Output:
-All of the nodes outputs are in ```msg.covid19```. 
+All of the nodes outputs are in ```msg.covid```. 
 
 Default values that are always sent to the output are:
 ```
-msg.covid19.(countryISO).countryinfo.country        (string)
-msg.covid19.(countryISO).countryinfo.iso            (string)
-msg.covid19.(countryISO).countryinfo.iso2           (string)
-msg.covid19.(countryISO).countryinfo.flagurl        (string)
-msg.covid19.(countryISO).countryinfo.location.lat   (number)
-msg.covid19.(countryISO).countryinfo.location.long  (number)
+msg.covid.(countryISO).countryinfo.country        (string)
+msg.covid.(countryISO).countryinfo.iso            (string)
+msg.covid.(countryISO).countryinfo.iso2           (string)
+msg.covid.(countryISO).countryinfo.flagurl        (string)
+msg.covid.(countryISO).countryinfo.location.lat   (number)
+msg.covid.(countryISO).countryinfo.location.long  (number)
 ```
 Other variable outputs are:
 ```
-msg.covid19.(countryISO).cases          (number)    Cases count
-msg.covid19.(countryISO).deaths         (number)    Deaths count
-msg.covid19.(countryISO).recovered      (number)    Recovered count
-msg.covid19.(countryISO).active         (number)    Active count
-msg.covid19.(countryISO).critical       (number)    Critical count
-msg.covid19.(countryISO).todaycases     (number)    Today count
-msg.covid19.(countryISO).todaydeaths    (number)    Today Deaths count
-msg.covid19.(countryISO).casemilion     (number)    Cases Per One Milion count
-msg.covid19.(countryISO).deathsmilion   (number)    Deaths Per One Milion count 
+msg.covid.(countryISO).cases          (number)    Cases count
+msg.covid.(countryISO).deaths         (number)    Deaths count
+msg.covid.(countryISO).recovered      (number)    Recovered count
+msg.covid.(countryISO).active         (number)    Active count
+msg.covid.(countryISO).critical       (number)    Critical count
+msg.covid.(countryISO).todaycases     (number)    Today count
+msg.covid.(countryISO).todaydeaths    (number)    Today Deaths count
+msg.covid.(countryISO).casemilion     (number)    Cases Per One Milion count
+msg.covid.(countryISO).deathsmilion   (number)    Deaths Per One Milion count 
 
 ```
 All of these outputs are optional, depending if selected checkboxes are checked or not. 
