@@ -1,5 +1,5 @@
 # node-red-contrib-covid19
-A simple node-red node to gather statistics regarding of COIVD-19 (Corona) virus cases.
+A simple set of node-red nodes to gather statistics regarding of COIVD-19 (Corona) virus cases.
 ## Install
 Run the following npm command in your Node-RED user directory (typically ~/.node-red):
 ```
@@ -7,12 +7,9 @@ npm install node-red-contrib-covid19
 ```
 Note that statistics rely on [external sources](https://github.com/novelcovid/api), witch may not be 100% accurate, and may not be online 24/7.
 
-## Version 1.1.0
-msg.covid19 is changed to covid.
-
-Improved status messages.
-
-Improved functionality.
+## Version 2.0.0
+Added two new nodes 
+All of the nodes are moved to the COVID19 category inside node-red
 
 
 ## Node usage
@@ -69,3 +66,15 @@ In case the Countries text box is lefted empty or haves an error you will reciev
 In case your textbox haves an invalid country iso format you will recieve the following error.
 
 ![](https://user-images.githubusercontent.com/53474043/77585941-9e435380-6ee5-11ea-9ea4-8fb539c1d3b5.png)
+
+### New nodes
+
+![](https://user-images.githubusercontent.com/53474043/78503005-4a95fd00-7764-11ea-9bb3-a1b06ddcd7c3.png)
+
+These are the results from the worldwide node:
+
+![](https://user-images.githubusercontent.com/53474043/78503022-64cfdb00-7764-11ea-8bb2-5167ab90d677.png)
+
+These are the results from the affected countries node:
+
+![](https://user-images.githubusercontent.com/53474043/78503025-70230680-7764-11ea-8f98-43e0182a7f6a.png)
