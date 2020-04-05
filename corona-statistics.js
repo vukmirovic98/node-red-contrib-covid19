@@ -94,10 +94,10 @@ module.exports = function(RED) {
         }  
             if (RED.util.getMessageProperty(msg, 'covid') != null){
                 node.send(msg) 
-                node.status({fill:"green",shape:"dot",text:"Done!"});}  
+                node.status({fill:"green",shape:"dot",text:"Done!"});  
                 sleep(5000).then(() => {
                     node.status({ });
-                });
+                });}
                 
 
         })
@@ -112,5 +112,5 @@ module.exports = function(RED) {
 
         })
  } 
-RED.nodes.registerType("COVID-19",COVID19);
+RED.nodes.registerType("country statistics",COVID19);
 }

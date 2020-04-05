@@ -14,7 +14,7 @@
  * limitations under the License.
  **/
 <script type="text/javascript">
-    RED.nodes.registerType('country statistics',{
+    RED.nodes.registerType('worldwide',{
         category: 'COVID19',
         color: '#a6bbcf',
         defaults: {
@@ -27,41 +27,21 @@
             todaycases:{value: false},
             todaydeaths:{value: false},
             casepermilion:{value: false},
-            regionFilter: {value: true},
             deathspermilion:{value: false},
-            regionList: {value: '["CN","IT"]', validate: function(v) {
-                // The region list only needs to be specified when the region filter is checked
-                var regionFilter = $('#node-input-regionFilter').prop('checked');
-                    var json = JSON.parse(v);
-                    return json && Array.isArray(json) && json.length > 0;
-                return true; // Valid otherwise
-            }},
-            regionListType: {value: "json"}
+           
+            
         },
         inputs:1,
         outputs:1,
         icon: "/icons/icon.png",
         label: function() {
-            return this.name||"country statistics";
+            return this.name||"worldwide";
         },
-        oneditprepare: function() {
-            $('#node-input-regionList').typedInput({
-                typeField: $("#node-input-regionListType"),
-                types: ['json']
-            });
-            $("#node-input-regionFilter").on("change", function (e) {
-                if (this.checked) {
-                    $(".regionList-row").show();
-                }
-                else {
-                    $(".regionList-row").hide();
-                }                
-            });
-        }                 
+                 
     });
 </script>
 
-<script type="text/html" data-template-name="country statistics">
+<script type="text/html" data-template-name="worldwide">
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -69,11 +49,7 @@
     <div class="form-row">
         <p><strong> Countries:</strong></p>
     </div>
-    <div class="form-row regionList-row">
-        <label style="padding-top: 8px" for="node-input-regionList"><i class="fa fa-list-ol"></i> Specify countries:</label>
-        <input type="text" id="node-input-regionList" style="width:60%">
-        <input type="hidden" id="node-input-regionListType">
-    </div>
+   
     <div class="form-row">
         <p><strong> Cases:</strong></p>
     </div>
@@ -114,30 +90,27 @@
         <input type="checkbox" id="node-input-deathspermilion" style="display: inline-block; width: auto; vertical-align: top;">
     </div>
 </script>
-<script type="text/html" data-help-name="country statistics">
+<script type="text/html" data-help-name="worldwide">
     <p>A simple node that returns statistics on <strong> COVID-19 (Corona) </strong>virus.</p>
-    <p> In Countries please use ISO formats.
-    </p>
-    <p>Only the countries specified will be in the output. </p>
-        <h3><strong>Settings</strong></h3>
+
+
+        <h3><strong>Outputs</strong></h3>
         <ol class="node-ports">
         <ul>
-            <li><i><strong>Cases:</strong></i>msg.covid-19.cases will contain a number of infected cases. </li>
-            <li><i><strong>Deaths:</strong></i> msg.covid-19.deaths will contain a number of death cases.</li>
-            <li><i><strong>Recovered:</strong></i> msg.covid-19.recovered will contain a number of recovered cases.</i></li>
-            <li><i><strong>Active:</strong></i> msg.covid-19.active will contain a number of currently active cases.</i></li>
-            <li><i><strong>Critical:</strong></i> msg.covid-19.critical will contain a number of currently critical cases.</i></li>
-            <li><i><strong>Today:</strong></i> msg.covid-19.todaycases will contain a number of daily new infected cases.</i></li>
-            <li><i><strong>Deaths Today:</strong></i> msg.covid-19.todaydeaths will contain a number of daily death cases.</i></li>
-            <li><i><strong>Per One Milion:</strong></i> msg.covid-19.casemilion will contain a number of cases per one milion of country population.</i></li>
-            <li><i><strong>Deaths Per One Milion:</strong></i> msg.covid-19.deathsmilion will contain a number of deaths per one milion of country population.</i></li>
+            <li><i><strong>Cases:</strong></i>msg.covid19.cases will contain a number of infected cases. </li>
+            <li><i><strong>Deaths:</strong></i> msg.covid19.deaths will contain a number of death cases.</li>
+            <li><i><strong>Recovered:</strong></i> msg.covid19.recovered will contain a number of recovered cases.</i></li>
+            <li><i><strong>Active:</strong></i> msg.covid19.active will contain a number of currently active cases.</i></li>
+            <li><i><strong>Critical:</strong></i> msg.covid19.critical will contain a number of currently critical cases.</i></li>
+            <li><i><strong>Today:</strong></i> msg.covid19.todaycases will contain a number of daily new infected cases.</i></li>
+            <li><i><strong>Deaths Today:</strong></i> msg.covid19.todaydeaths will contain a number of daily death cases.</i></li>
+            <li><i><strong>Per One Milion:</strong></i> msg.covid19.casemilion will contain a number of cases per one milion of population.</i></li>
+            <li><i><strong>Deaths Per One Milion:</strong></i> msg.covid19.deathsmilion will contain a number of deaths per one milion of population.</i></li>
+            <li><i><strong>Updated:</strong></i> msg.covid19.updated will contain a timestamp of last statistics update</i></li>
+            <li><i><strong>Affected Countries:</strong></i> msg.covid19.affectedCountries will contain a number of infected countries</i></li>
         </ul></p>
         <p> 
          
         </ol>
-        <h3><strong>Outputs</strong></h3>
-        <ol class="node-ports">
-        <ul>
-            <li></i><strong>msg.covid-19.countryinfo </strong></i> will contain some basic information as: ISO formats, country name, URL to the image file of national flag of the country, and the location of the country in lat/long.
-        </ul>
+       
 </script>
