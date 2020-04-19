@@ -15,8 +15,6 @@
  **/
 module.exports = function(RED) {
     const fetch = require('node-fetch');
-    const { NovelCovid } = require('novelcovid');
-    const track = new NovelCovid();
     function COVID19(config) {
         RED.nodes.createNode(this,config);
         var cases                   =config.infected;
@@ -28,8 +26,8 @@ module.exports = function(RED) {
         var deaths_today            =config.todaydeaths;
         var casepermilion           =config.casepermilion;
         var deathspermilion         =config.deathspermilion;
+        this. url                     ="https://corona.lmao.ninja/v2/countries";
         var node                    = this;
-
         node.status({ });
         
         function sleep (time) {
@@ -46,9 +44,11 @@ module.exports = function(RED) {
      
             node.status({fill:"blue",shape:"dot",text:"Requesting"});
 
-          (async () => {
-            let result = await track.countryNames()
-       
+        
+            fetch(node.url, { method: 'GET'   } ).then(function(res) {  
+                if (res.ok) {res.json().then( function(result) {
+                result.status = res.status;
+            result.statusText = res.statusText 
         
         
             node.status({fill:"blue",shape:"dot",text:"Parsing JSON."});
@@ -67,18 +67,20 @@ module.exports = function(RED) {
                         });}
 
                         else {node.error ('Error getting the response.')
-        
+         
                         node.status({fill:"red",shape:"dot",text:"error"});
                         sleep(5000).then(() => {
                             node.status({ });
                         });} 
                 
-
+                        ;
+                    })}         
+                } )
 
        
         
 
-            })();
+            
            
                 
 

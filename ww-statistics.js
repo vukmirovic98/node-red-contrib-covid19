@@ -15,8 +15,6 @@
  **/
 module.exports = function(RED) {
     const fetch = require('node-fetch');
-    const { NovelCovid } = require('novelcovid');
-    const track = new NovelCovid();
     function COVID19(config) {
         RED.nodes.createNode(this,config);
         var cases                   =config.infected;
@@ -29,7 +27,7 @@ module.exports = function(RED) {
         var casepermilion           =config.casepermilion;
         var deathspermilion         =config.deathspermilion;
         var node                    = this;
-
+        this. url                     ="https://corona.lmao.ninja/v2/all";
         node.status({ });
         
         function sleep (time) {
@@ -40,19 +38,22 @@ module.exports = function(RED) {
     if (node.cases == false && node.deaths==false && node.recovered==false && node.active ==false && node.critical==false && node.today==false && node.deaths_today==false && node.casepermilion==false && node.deathspermilion==false){        
         node.error("At least one or more checkbox must be checked!");
         node.status({fill:"red",shape:"dot",text:"error"});      
-     
+      
     }
     node.on('input', function(msg, send, done) {   
      
             node.status({fill:"blue",shape:"dot",text:"Requesting"});
 
-          (async () => {
-            let result = await track.all()
+            fetch(node.url, { method: 'GET'   } ).then(function(res) {  
+                if (res.ok) {res.json().then( function(result) {
+                result.status = res.status;
+            result.statusText = res.statusText 
+               
+                          
+ 
+               
+               
             node.status({fill:"blue",shape:"dot",text:"Parsing JSON."});
-           
-                  
-    
-  
                     if (cases){ RED.util.setMessageProperty(msg,'covid.cases', result.cases, true);}
                     if (deaths){RED.util.setMessageProperty(msg, 'covid.deaths', result.deaths, true);}
                     if (recovered)  {RED.util.setMessageProperty(msg,'covid.recovered', result.recovered, true);}                   
@@ -87,8 +88,9 @@ module.exports = function(RED) {
        
         
 
-            })();
-           
+            ;
+        })}         
+    } )
                 
 
         })

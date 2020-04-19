@@ -27,7 +27,7 @@ module.exports = function(RED) {
         var casepermilion           =config.casepermilion;
         var deathspermilion         =config.deathspermilion;
       
-        this. url                     ="http://corona.lmao.ninja/countries/";
+        this. url                     ="https://corona.lmao.ninja/v2/countries";
         this.regionListValue         =null;
         this.isrequesting            =false;
         var node                     = this;

@@ -3,9 +3,7 @@
   "version": "2.0.0",
   "description": "A node-red node to gather information about the statistics of COVID-19 (Corona) virus.",
   "dependencies": {
-    "novelcovid": "1.1.4",
     "node-fetch": "2.6.0"
-
   },
   "node-red": {
     "nodes": {
@@ -21,12 +19,11 @@
     "covid",
     "covid-19"
   ],
-   "homepage": "https://github.com/vukmirovic98/node-red-contrib-covid19/",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/vukmirovic98/node-red-contrib-covid19/.git"
-    },
+  "homepage": "https://github.com/vukmirovic98/node-red-contrib-covid19/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vukmirovic98/node-red-contrib-covid19/.git"
+  },
   "author": "Nemanja Vukmirovic",
   "license": "Apache-2.0"
 }
-
