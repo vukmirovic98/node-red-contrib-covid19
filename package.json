@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-covid19",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A node-red node to gather information about the statistics of COVID-19 (Corona) virus.",
   "dependencies": {
     "node-fetch": "2.6.0"
