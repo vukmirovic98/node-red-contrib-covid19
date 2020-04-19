@@ -7,10 +7,9 @@ npm install node-red-contrib-covid19
 ```
 Note that statistics rely on [external sources](https://github.com/novelcovid/api), witch may not be 100% accurate, and may not be online 24/7.
 
-## Version 2.0.0
-Added two new nodes 
-All of the nodes are moved to the COVID19 category inside node-red
-
+## Version 2.0.1
+Removed dependency 'novelcovid'
+Updated fetch link.
 
 ## Node usage
 This node gets a request of all of the statistics, and filter them according to nodes settings.
